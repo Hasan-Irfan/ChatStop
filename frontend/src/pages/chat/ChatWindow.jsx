@@ -57,47 +57,71 @@ export const ChatWindow = ({ selectedFriend, setSelectedFriend }) => {
       setMessages(chatHistory.data || []);
     }
   }, [chatHistory]);
+
   useEffect(() => {
     if (!socket) return;
 
-    // Listen for new messages
     socket.on("newMessage", (message) => {
       if (message.sender === selectedFriend || message.sender === username) {
         setMessages((prevMessages) => [...prevMessages, message]);
       }
     });
-
     return () => {
       socket.off("newMessage");
     };
   }, [socket, selectedFriend, username]);
 
   const handleSendMessage = async () => {
-    if (!newMessage.trim() || !selectedFriend) return;
+  if (!newMessage.trim() || !selectedFriend) return;
 
-    const messageObj = {
-      sender: username,
-      recipient: selectedFriend,
-      message: newMessage,
-    };
-
-    try {
-      await sendMessage(messageObj).unwrap();
-
-      if (socket) {
-        socket.emit("sendMessage", messageObj);
-      }
-
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: username, message: newMessage, timestamp: new Date() },
-      ]);
-
-      setNewMessage("");
-    } catch (error) {
-      console.error("Failed to send message:", error);
-    }
+  const messageObj = {
+    sender: username,
+    recipient: selectedFriend,
+    message: newMessage,
   };
+
+  try {
+    await sendMessage(messageObj).unwrap();
+
+    if (socket) {
+      socket.emit("sendMessage", messageObj);
+    }
+
+    refetch(); // Refetch messages to ensure UI is updated
+
+    // Don't manually update messages state - let socket or refetch handle it
+    setNewMessage("");
+  } catch (error) {
+    console.error("Failed to send message:", error);
+  }
+};
+
+  // const handleSendMessage = async () => {
+  //   if (!newMessage.trim() || !selectedFriend) return;
+
+  //   const messageObj = {
+  //     sender: username,
+  //     recipient: selectedFriend,
+  //     message: newMessage,
+  //   };
+
+  //   try {
+  //     await sendMessage(messageObj).unwrap();
+
+  //     if (socket) {
+  //       socket.emit("sendMessage", messageObj);
+  //     }
+
+  //     setMessages((prevMessages) => [
+  //       ...prevMessages,
+  //       { sender: username, message: newMessage, timestamp: new Date() },
+  //     ]);
+
+  //     setNewMessage("");
+  //   } catch (error) {
+  //     console.error("Failed to send message:", error);
+  //   }
+  // };
 
   return (
     <div className="flex flex-col h-full bg-white rounded-lg shadow-lg w-full">
@@ -116,10 +140,10 @@ export const ChatWindow = ({ selectedFriend, setSelectedFriend }) => {
       <div className="flex-1 p-4 overflow-y-auto bg-[#F4F6FA] max-h-[calc(100vh-200px)]">
         {isLoading ? (
           <p>Loading messages...</p>
-        ) : error ? (
-          <p className="text-red-500">Error loading messages</p>
         ) : messages?.length === 0 ? (
-          <p className="text-gray-500">No messages yet.</p>
+          <p className="text-gray-500">No messages yet.</p> 
+        ) :  error ? (
+          <p className="text-red-500">Error loading messages</p>
         ) : (
           messages?.map((msg, index) => (
             <div

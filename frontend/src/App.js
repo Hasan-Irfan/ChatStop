@@ -10,6 +10,7 @@ import { ProtectedRoutes } from "./routes/ProtectedRoutes";
 import ChatPage from "./pages/chat/ChatPage";
 import { Component } from "./pages/Component";
 import { Login } from "./pages/Login";
+import ProfilePage from "./pages/profilePage";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route element={<UserRoutes />}>
             <Route path="/homepage" element={<Component />} />
             <Route path="/chatpage" element={<ChatPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Route>
         </Route>
       </Routes>

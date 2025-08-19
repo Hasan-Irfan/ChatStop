@@ -5,11 +5,11 @@ import { useLogoutMutation } from "../../services/authApi";
 import { handleSuccess } from "../../utils/toastUtil";
 import { FaBars, FaTimes, FaBell } from "react-icons/fa";
 import {
-  logout as logoutFromSlice,
+  logout as clearUser,
   updateFriendRequests,
 } from "../../services/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetFriendRequestQuery, useHandleRequestMutation } from "../../services/requestApi";
+import { useGetFriendRequestQuery, useHandleRequestMutation} from "../../services/requestApi";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,23 +35,14 @@ export const Navbar = () => {
     }
   }, [data, dispatch]);
 
-  useEffect(() => {
-    if (!username) {
-      navigate("/login");
-    }
-  }, [username, navigate]);
+  // Auth navigation is handled by ProtectedRoutes; avoid redirecting here to prevent loops
 
   const handleLogout = async () => {
     try {
-      dispatch(logoutFromSlice());
-      const response = await logout().unwrap();
-
-      if (response.success) {
-        handleSuccess(response.message);
-        setTimeout(() => {
-          navigate("/login");
-        }, 500);
-      }
+      // Optimistic clear and navigate immediately to avoid throttling/reload loops
+      dispatch(clearUser());
+      navigate("/login");
+      await logout().unwrap().catch(() => {});
     } catch (error) {
       console.error(error);
     }
@@ -84,14 +75,12 @@ export const Navbar = () => {
     <nav className="bg-white border-b shadow-lg">
       <div className="flex justify-between items-center px-6 py-4">
         <div className="flex items-center gap-6">
-          <div className="logo flex items-center">
-            <img
-              src="https://via.placeholder.com/40"
-              alt="Logo"
-              className="rounded-full"
-            />
-          </div>
           <ul className="hidden md:flex gap-6 text-gray-600 text-lg font-medium">
+            <li>
+              <Link to="/profile" className="hover:text-blue-500 transition">
+                Profile
+              </Link>
+            </li>
             <li>
               <Link to="/homepage" className="hover:text-blue-500 transition">
                 Home

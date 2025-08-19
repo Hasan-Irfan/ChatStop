@@ -65,7 +65,6 @@ export const authApi = createApi({
       query: () => ({
         url: '/verify', 
         method: 'POST',
-       
       }),
     }),
 

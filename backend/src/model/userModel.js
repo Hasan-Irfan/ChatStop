@@ -7,7 +7,12 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     role: {type: String, default: "visitor"},
-
+    isVerified: { type: Boolean, default: false },
+    isSuspended: { type: Boolean, default: false },
+    suspendedAt: { type: Date, default: null },
+    suspensionReason: { type: String, default: "" },
+    lastLoginAt: { type: Date, default: null },
+    profilePicture: { type: String, default: "" },
     friends: [{ type: String }], 
     friendRequests: [
       {

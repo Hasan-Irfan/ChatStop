@@ -1,3 +1,34 @@
+// import { asyncHandler } from "../utils/asyncHandler.js";
+// import { sendMessageService, getConversationService } from "../services/messageServices.js";
+
+// export const sendMessage = asyncHandler(async (req, res) => {
+//   const { sender, recipient, message } = req.body;
+//   const loggedInUser = req.user.username;
+
+//   if (loggedInUser !== sender) {
+//     return res.status(403).json({ message: "You can only send messages as yourself" });
+//   }
+
+//   try {
+//     const chat = await sendMessageService(sender, recipient, message);
+//     res.status(201).json({ message: "Message sent successfully", data: chat });
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
+// export const getConversation = asyncHandler(async (req, res) => {
+//   const { friend } = req.params;
+//   const loggedInUser = req.user.username;
+
+//   try {
+//     const messages = await getConversationService(loggedInUser, friend);
+//     res.status(200).json({ message: "Messages retrieved successfully", data: messages });
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
 import { Message } from "../model/messageModel.js";
 import { User } from "../model/userModel.js";
 import {  getReceipientSocketId, io } from "../socket/socket.js";
