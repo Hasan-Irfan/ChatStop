@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon -r dotenv/config --experimental-json-modules index.js"
+    "dev": "nodemon -r dotenv/config --experimental-json-modules index.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand"
   },
   "keywords": [
     "node"
@@ -31,6 +32,8 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.7",
+    "cross-env": "^7.0.3"
   }
 }

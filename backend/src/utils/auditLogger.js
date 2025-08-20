@@ -20,7 +20,6 @@ export const logAudit = async ({ req, action, status = "success", targetUserId =
       details,
     });
   } catch (e) {
-    // Do not throw; logging failures shouldn't break the app
     console.error("Audit log error:", e?.message || e);
   }
 };
